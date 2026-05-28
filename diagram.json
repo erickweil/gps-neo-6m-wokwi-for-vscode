@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Rizqi Bagus Andrean",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "chip-gps-neo6m",
+      "id": "chip1",
+      "top": 40,
+      "left": 180,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+    ["chip1:GND", "esp:GND", "black", ["h0"]],
+    ["chip1:VCC", "esp:3V3", "red", ["h0"]],
+    ["chip1:TX", "esp:16", "blue", ["h0"]],
+    ["chip1:RX", "esp:17", "green", ["v0"]]
+  ],
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+{
+  "name": "gps-neo6m",
+  "author": "Rizqi Bagus Andrean",
+  "pins": ["VCC", "RX", "TX", "GND"]
+}
