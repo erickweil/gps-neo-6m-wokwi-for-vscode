@@ -11,6 +11,7 @@
 
 #define LEN(arr) ((int)(sizeof(arr) / sizeof(arr)[0]))    
 #define SECOND 1000000    
+#define SENTENCES_COUNT 3
 
 const char gps_tx_data[][80] = {
   "$GPGGA,172914.00,0756.5500,S,11236.9360,E,1,08,1.0,450.0,M,0.0,M,,*4E\r\n",
@@ -66,11 +67,12 @@ void chip_init(void) {
 void chip_timer_event(void *user_data) {
   chip_state_t *chip = (chip_state_t*) user_data;
 
-  const char * message = gps_tx_data[chip->gps_tx_index++];
+  for (int i = 0; i < SENTENCES_COUNT; i++) {
+    const char * message = gps_tx_data[chip->gps_tx_index++];
+    uart_write(chip->uart0, (uint8_t *) message, strlen(message));
 
-  uart_write(chip->uart0, (uint8_t *) message, strlen(message));
-
-  if (chip->gps_tx_index >= LEN(gps_tx_data)) {       
-    chip->gps_tx_index = 0;
+    if (chip->gps_tx_index >= LEN(gps_tx_data)) {       
+      chip->gps_tx_index = 0;
+    }
   }
 }

@@ -8,6 +8,26 @@ This repository contains a custom GPS NEO-6M chip for Wokwi. The chip is impleme
 - Chip logic written in C and compiled to WebAssembly
 - Example configuration included in `diagram.json`
 
+## Usage
+To use this chip in your project, include it as a dependency in your diagram.json file:
+
+```json
+{
+  "dependencies": {
+    "chip-gps-neo6m": "github:erickweil/gps-neo-6m-wokwi-for-vscode@1.0.0"
+  }
+}
+```
+Then, add the chip to your circuit by adding a chip-gps-neo6m item to the parts section of diagram.
+```json
+{
+  "parts": [
+    ...,
+    { "type": "chip-gps-neo6m", "id": "gps" }
+  ]
+}
+```
+
 ## Project Structure
 
 - `chips/` — chip sources and generated `*.wasm`
